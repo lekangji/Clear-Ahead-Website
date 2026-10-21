@@ -4,7 +4,7 @@
 
 <h1 align="center">Clear Ahead</h1>
 <p align="center"><i>Because awareness shouldn't depend on sight alone.</i></p>
-<p align="center"><a href="https://clearahead.lekangji.cc"><strong>See the site on GitHub →</strong></a></p>
+<p align="center"><a href="https://clearahead.lekangji.cc"><strong>See the site →</strong></a></p>
 
 An app in development that describes nearby objects through **sounds, spoken words, and vibrations**. This website explains the idea, shows how it works, and links to the code.
 
