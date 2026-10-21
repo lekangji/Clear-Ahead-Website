@@ -73,11 +73,28 @@ test('production has four direct-entry documents with unique metadata and local 
   assert.ok(assets.some(name => /inter-latin-wght-normal.*\.woff2$/.test(name)), 'Inter must ship locally');
 });
 
-test('shared UI preserves route coverage, private source status, and safety constraints', async () => {
+test('shared UI preserves route coverage, repository links, and safety constraints', async () => {
   const source = await readFile('src/main.tsx', 'utf8');
   for (const route of ['/', '/how-it-works/', '/project/', '/safety-privacy/']) assert.ok(source.includes(`'${route}'`));
   assert.match(source, /https:\/\/github\.com\/jiayangc1\/cac/);
-  assert.match(source, /currently private/);
+  assert.doesNotMatch(source, /currently private|private repository|authorized access|public source access/i);
   assert.match(source, /does not replace a cane, guide dog/);
   assert.doesNotMatch(source, /mailto:|<form|<iframe|google-analytics\.com|googletagmanager\.com/i);
+});
+
+test('public files and production output contain no local user-directory paths', async () => {
+  async function check(path) {
+    const entries = await readdir(path, { withFileTypes: true });
+    for (const entry of entries) {
+      const file = join(path, entry.name);
+      if (entry.isDirectory()) await check(file);
+      else if (/\.(?:html|tsx?|css|js|map|json|md|svg|txt)$/i.test(file)) {
+        assert.doesNotMatch(await readFile(file, 'utf8'), /(?:[a-z]:[\\/]+Users[\\/]|\/(?:Users|home)\/)[^\s"'<>]+/i, file);
+      }
+    }
+  }
+  for (const file of ['README.md', 'PRODUCT.md']) {
+    assert.doesNotMatch(await readFile(file, 'utf8'), /(?:[a-z]:[\\/]+Users[\\/]|\/(?:Users|home)\/)[^\s"'<>]+/i, file);
+  }
+  for (const directory of ['src', 'public', 'dist']) await check(directory);
 });

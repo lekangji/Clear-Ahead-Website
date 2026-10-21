@@ -24,13 +24,13 @@ Clear Ahead is an experimental, iPhone-only assistive vision prototype. This web
 ## Website brief
 
 - Four pages: Home, How It Works, The Project, Safety & Privacy. The homepage carries the essential story; supporting pages deepen it.
-- Primary action: Explore how it works. GitHub is a secondary link, explicitly marked private. Public source access is planned; no release date is established.
+- Primary action: View the app repository on GitHub. Help judges find the source from the homepage, navigation, project page, and footer. Other homepage actions lead to supporting website pages.
 - No contact address, app distribution link, physical performance results, testimonials, or real media are available. Omit them, including empty placeholders.
 - Build locally with React, TypeScript, Vite, four static entry pages, and native links. No backend, analytics, publication, or iPhone app changes.
 
 ## Brand and design commitments
 
-Preserve the existing logo. Follow the user's global `C:/Users/lekan.BESTLAPTOP/.codex/DESIGN.md` Stripe-inspired guidelines, with the icon's blue/cyan/silver accents, as confirmed by the user. Use locally hosted Inter, the reference's open-source substitute for Sohne. The user approved organic animated backgrounds and moving banners. Include pause and reduced-motion controls. The build is code-led; the workspace `.codex/DESIGN.md` records the adaptation of the global authority.
+Preserve the existing logo and Stripe-inspired design, with the icon's blue/cyan/silver accents. Use locally hosted Inter and retain the existing organic animated backgrounds, moving banners, and reduced-motion support. Keep copy concise, spacing compact, and footer content centered on every page. Do not include personal details or local computer paths in public files.
 
 ## Evidence
 
