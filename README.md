@@ -4,7 +4,7 @@
 
 <h1 align="center">Clear Ahead</h1>
 <p align="center"><i>Because awareness shouldn't depend on sight alone.</i></p>
-<p align="center"><a href="https://clearahead.lekangji.cc"><strong>See the site on GitHub →</strong></a></p>
+<p align="center"><a href="https://clearahead.lekangji.cc"><strong>Explore the website →</strong></a> · <a href="https://github.com/jiayangc1/cac">App source on GitHub</a></p>
 
 An app in development that describes nearby objects through **sounds, spoken words, and vibrations**. This website explains the idea, shows how it works, and links to the code.
 
@@ -15,7 +15,7 @@ An app in development that describes nearby objects through **sounds, spoken wor
 - **Keep camera images on your phone.** The app does not upload or save them.
 - **See how it’s built.** Explore the code in the [app repository](https://github.com/jiayangc1/cac).
 
-The site covers **How it works**, **The project**, and **Safety & privacy**. It uses React, TypeScript, Vite, and a bundled Inter font. You can navigate with a keyboard, pause the scrolling banner, or turn off animations through your device’s reduced-motion setting.
+The site covers **How it works**, **The project**, and **Safety & privacy**. A blue, Stripe-inspired design pairs locally bundled Inter with animated diagrams of camera processing and feedback. Keyboard navigation and your device’s reduced-motion setting are supported throughout.
 
 ## Run the website
 

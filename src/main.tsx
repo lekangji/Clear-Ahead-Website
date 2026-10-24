@@ -20,8 +20,8 @@ function Arrow({ diagonal = false }: { diagonal?: boolean }) {
   return <Icon strokeWidth={1.6} aria-hidden="true" />;
 }
 
-function Link({ href, children, button = false, light = false }: { href: string; children: ReactNode; button?: boolean; light?: boolean }) {
-  return <a className={button ? `button${light ? ' button-light' : ''}` : 'text-link'} href={href}>{children}<Arrow diagonal={href.startsWith('https:')} /></a>;
+function Link({ href, children, button = false }: { href: string; children: ReactNode; button?: boolean }) {
+  return <a className={button ? 'button' : 'text-link'} href={href}>{children}<Arrow diagonal={href.startsWith('https:')} /></a>;
 }
 
 function MotionRegion({ className, children }: { className: string; children: ReactNode }) {
@@ -69,12 +69,20 @@ function AmbientMesh() {
 
 function SignalDiagram() {
   return <figure className="signal-diagram" aria-label="Diagram showing how the camera view becomes sounds, spoken descriptions, and vibrations."><MotionRegion className="signal-composition">
-    <div className="scene-origin"><span className="scene-dot" />What the camera sees</div>
-    <svg className="signal-connections" viewBox="0 0 500 390" fill="none" aria-hidden="true"><path d="M250 42v35q0 24-24 24H85q-24 0-24 24v175M250 101v115M250 101h140q24 0 24 24v210" stroke="#A8C3DE" strokeWidth="1.5" /><path className="signal-path ambient-motion" d="M250 42v35q0 24-24 24H85q-24 0-24 24v175M250 101v115M250 101h140q24 0 24 24v210" stroke="#2784E8" strokeWidth="2" strokeDasharray="12 180" /></svg>
-    <div className="signal-banner signal-sound ambient-motion"><div><strong>Directional sound</strong><span>Where things are</span></div><AudioLines strokeWidth={1.5} aria-hidden="true" /></div>
-    <div className="signal-banner signal-speech ambient-motion"><div><strong>Spoken descriptions</strong><span>What things are</span></div><MessageSquareText strokeWidth={1.5} aria-hidden="true" /></div>
-    <div className="signal-banner signal-haptics ambient-motion"><div><strong>Vibration alerts</strong><span>Possible danger nearby</span></div><Vibrate strokeWidth={1.5} aria-hidden="true" /></div>
-  </MotionRegion></figure>;
+    <div className="scene-origin"><Camera strokeWidth={1.5} aria-hidden="true" />Camera view</div>
+    <svg className="signal-connections" viewBox="0 0 520 440" fill="none" aria-hidden="true">
+      <defs><linearGradient id="scan-fill" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#51B4F0" stopOpacity="0" /><stop offset="1" stopColor="#51B4F0" stopOpacity=".22" /></linearGradient></defs>
+      <path d="M24 94V74h24m150 0h24v20M24 242v20h24m150 0h24v-20" stroke="#1265BC" strokeWidth="1.5" />
+      <g className="sensor-outline ambient-motion" stroke="#1265BC"><rect x="57" y="112" width="63" height="102" rx="4" /><path d="M144 152h47v62h-47z" strokeDasharray="4 4" /><path d="M57 127v-15h15m33 0h15v15m0 72v15h-15m-33 0H57v-15" strokeWidth="3" /></g>
+      <path className="sensor-scan ambient-motion" d="M36 88h174v48H36z" fill="url(#scan-fill)" /><path className="sensor-scan ambient-motion" d="M36 136h174" stroke="#2784E8" />
+      <g stroke="#1265BC" strokeOpacity=".2"><path d="M36 230q87-36 174 0M36 243q87-36 174 0" /><path d="M123 262v82q0 18 18 18h68M222 168h42q16 0 16-16V112h18M222 198h20q16 0 16 16v26h40" /></g>
+      <path className="signal-path ambient-motion" d="M222 168h42q16 0 16-16V112h18M222 198h20q16 0 16 16v26h40M123 262v82q0 18 18 18h68" stroke="#2784E8" strokeWidth="2" strokeDasharray="8 120" />
+      <text x="57" y="103" fill="#1265BC" fontSize="11">Object</text><text x="144" y="144" fill="#526780" fontSize="11">Surface</text>
+    </svg>
+    <div className="signal-banner signal-sound ambient-motion"><div><strong>Directional sound</strong><span>Where things are</span></div><span className="signal-waveform" aria-hidden="true">{[12, 24, 38, 20, 30, 14, 22].map((height, index) => <i key={index} className="ambient-motion" style={{ height, animationDelay: `${index * 80 + 1300}ms` }} />)}</span></div>
+    <div className="signal-banner signal-speech ambient-motion"><div><strong>Spoken descriptions</strong><span>What things are</span></div><MessageSquareText className="signal-voice ambient-motion" strokeWidth={1.5} aria-hidden="true" /></div>
+    <div className="signal-banner signal-haptics ambient-motion"><div><strong>Vibration alerts</strong><span>Possible danger nearby</span></div><Vibrate className="signal-touch ambient-motion" strokeWidth={1.5} aria-hidden="true" /></div>
+  </MotionRegion><figcaption>Illustrative signal flow</figcaption></figure>;
 }
 
 function FeatureRibbon() {
@@ -114,11 +122,11 @@ function DevicePreview() {
       <path d="M134 77h118m96 0h118" stroke="currentColor" strokeOpacity=".25" strokeWidth="1.5" />
       <path className="device-signal ambient-motion" d="M134 77h118m96 0h118" stroke="currentColor" strokeWidth="2" strokeDasharray="10 108" />
       <rect x="58" y="43" width="76" height="68" rx="12" className="device-node" />
-      <Camera x="76" y="57" strokeWidth={1.2} />
+      <Camera x="76" y="57" size={40} strokeWidth={1.2} />
       <rect x="252" y="33" width="96" height="88" rx="12" className="device-node" />
-      <Cpu x="280" y="57" strokeWidth={1.2} /><path className="processor-pulse ambient-motion" d="M295 72h10v10h-10Z" fill="currentColor" />
+      <Cpu x="280" y="57" size={40} strokeWidth={1.2} /><path className="processor-pulse ambient-motion" d="M295 72h10v10h-10Z" fill="currentColor" />
       <rect x="466" y="43" width="76" height="68" rx="12" className="device-node" />
-      <AudioLines x="484" y="57" strokeWidth={1.2} />
+      <AudioLines x="484" y="57" size={40} strokeWidth={1.2} />
     </svg>
     <div className="device-labels"><span>Camera view</span><span>Your phone</span><span>Sound & touch</span></div>
   </MotionRegion></figure>;
@@ -141,10 +149,10 @@ function Header() {
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="site-header wrap">
-      <a className="brand" href="/" aria-label="Clear Ahead home"><img src="/clear-ahead-logo.png" alt="" width="36" height="32" /><span>Clear Ahead</span></a>
+      <a className="brand" href="/" aria-label="Clear Ahead home" aria-current={currentPath === '/' ? 'page' : undefined}><img src="/clear-ahead-logo.png" alt="" width="36" height="32" /><span>Clear Ahead</span></a>
       <button className="menu-button" type="button" ref={menuButton} aria-expanded={open} aria-controls="site-navigation" onClick={() => setOpen(!open)}><span className="menu-label">{open ? 'Close' : 'Menu'}</span>{open ? <X strokeWidth={1.5} aria-hidden="true" /> : <Menu strokeWidth={1.5} aria-hidden="true" />}</button>
       <nav id="site-navigation" className={open ? 'navigation is-open' : 'navigation'} aria-label="Main navigation">
-        {navigation.map(item => <a key={item.href} href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>)}
+        {navigation.slice(1).map(item => <a key={item.href} href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>)}
         <a href={github}>GitHub <Arrow diagonal /></a>
       </nav>
     </header>
@@ -173,19 +181,19 @@ function SafetyNote() {
 
 function Home() {
   return <>
-    <section className="home-intro"><AmbientMesh /><div className="wrap hero-grid"><div className="hero-copy"><h1>Another way<br />{' '}to sense what’s ahead.</h1><p className="lead">Use sound and touch to learn more about your surroundings.</p><p>Clear Ahead is an app in development. It uses the camera to describe nearby objects with sounds, spoken words, and vibrations.</p><div className="hero-actions"><Link href={github} button>See the code on GitHub</Link><Link href="/project/" button light>The project</Link></div></div><SignalDiagram /></div>
+    <section className="home-intro"><AmbientMesh /><div className="wrap hero-grid"><div className="hero-copy"><h1>Another way<br />{' '}to sense what’s ahead.</h1><p className="lead">Your iPhone’s camera becomes another source of awareness. Nearby objects, translated into sound, speech, and touch.</p><div className="hero-actions"><Link href={github} button>See the code on GitHub</Link><Link href="/how-it-works/">How it works</Link></div><p className="hero-status">An assistive vision prototype for iPhone · iOS 17+</p></div><SignalDiagram /></div>
     </section>
     <div className="wrap home-banner"><FeatureRibbon /></div>
 
     <section className="feedback-section wrap" aria-labelledby="feedback-heading">
-      <div className="feedback-panel"><div className="feedback-title"><h2 id="feedback-heading">One view.<br />{' '}Three ways to understand it.</h2><p>Turn sounds, speech, and vibrations on or off separately.</p><ChannelPreview /></div><div className="feedback-rows"><div><h3>Hear what’s nearby.</h3><p>Sounds suggest where objects are. Their volume changes with the estimated distance.</p></div><div><h3>Hear a description.</h3><p>Short spoken messages name objects and their direction. Other sounds get quieter while the app speaks.</p></div><div><h3>Feel an alert.</h3><p>The phone vibrates when the app estimates a risk of bumping into something.</p></div></div></div>
+      <div className="feedback-title"><h2 id="feedback-heading">One view. More context.</h2><p>Choose the feedback that works for you. Control each channel independently.</p></div><div className="feedback-rows"><div><AudioLines strokeWidth={1.5} aria-hidden="true" /><h3>Hear direction.</h3><p>Sounds suggest where objects are, with volume changing as estimated distance changes.</p></div><div><MessageSquareText strokeWidth={1.5} aria-hidden="true" /><h3>Hear a description.</h3><p>Short messages name objects and their direction. Other sounds soften while the app speaks.</p></div><div><Vibrate strokeWidth={1.5} aria-hidden="true" /><h3>Feel an alert.</h3><p>Vibrations signal an estimated risk of collision, rather than everything the camera sees.</p></div></div>
     </section>
 
-    <section className="mechanism-section wrap"><div className="section-heading"><h2>From your camera<br />{' '}to sound and touch.</h2><p>Your phone does the work. Camera images are not sent to a server.</p></div><ScenePreview /><ol className="process-strip"><li><h3>Look</h3><p>The rear camera shows what’s in front of the phone.</p></li><li><h3>Understand</h3><p>The app looks for objects and estimates how far away they are.</p></li><li><h3>Describe</h3><p>Sounds, words, and vibrations share what the app finds.</p></li></ol></section>
+    <section className="mechanism-section wrap"><div className="mechanism-copy"><h2>Objects, surfaces,<br />{' '}and the space between.</h2><p>The app follows visible objects and estimates distance. Nearby surfaces add context, even when they can’t be named.</p><Link href="/how-it-works/">Explore the technology</Link></div><ScenePreview /></section>
 
-    <section className="project-band"><div className="wrap project-band-inner"><div><h2>See how<br />{' '}<span>we’re building it.</span></h2></div><div className="project-band-copy"><p className="lead">Take a look at the code on GitHub.</p><p>See how the app finds objects, estimates distance, and turns that information into sound and touch. Testing on real devices is still needed.</p></div></div></section>
+    <section className="project-band"><div className="wrap"><div className="project-band-inner"><h2>On your phone.<br />{' '}<span>By design.</span></h2><div className="project-band-copy"><p>Camera images are processed on your iPhone, without being uploaded or saved. No account. No app server. No app analytics.</p><Link href="/project/">Inside the project</Link></div></div><DevicePreview /></div></section>
 
-    <section className="wrap home-details"><div className="essential-facts"><p><strong>Device support</strong><span>iPhone · iOS 17 or later</span></p><p><strong>Private processing</strong><span>Camera images stay on your phone</span></p><p><strong>Extra help</strong><span>Use alongside your cane or guide dog</span></p></div><EditorialRow title={<>Know the limits.<br />{' '}Still being tested.</>}><p>Requires iOS 17 or later. Testing will focus on iPhone 12 and newer. Older phones that can install the app have not been tested.</p><p>The app only sees what is in the camera’s current view. Distances are estimates.</p><SafetyNote /></EditorialRow></section>
+    <section className="wrap home-details"><EditorialRow title={<>Extra awareness.<br />{' '}With real limits.</>}><p>Clear Ahead only covers the camera’s current view, and distances are estimates. Physical testing will focus on iPhone 12 and newer; performance on older compatible phones is unvalidated.</p><SafetyNote /><Link href="/safety-privacy/">Read safety & privacy</Link></EditorialRow></section>
   </>;
 }
 
@@ -211,7 +219,7 @@ function Project() {
     <PageIntro title={<>More ways to know<br />{' '}what’s around you.</>}><p className="lead">We’re exploring how a phone can turn camera images into useful sound and touch.</p></PageIntro>
     <div className="wrap editorial-content"><EditorialRow title="Why we’re building it."><p>A camera captures a lot, but a picture is not useful to everyone. Clear Ahead explores another way to share that information: sounds, spoken descriptions, and vibrations.</p><p>It is meant to work alongside a cane, guide dog, and existing mobility skills.</p><Link href={github} button>See the code on GitHub</Link></EditorialRow></div>
     <section className="architecture-band"><div className="wrap"><div className="section-heading"><h2>All the work happens<br />{' '}on your phone.</h2><p>The app’s screens use React Native. Swift handles the camera images, sound, and vibrations directly on the phone.</p></div><DevicePreview /><ol className="architecture-flow"><li><h3>Camera</h3><p>The rear camera sends images for the app to check.</p></li><li><h3>Understanding the view</h3><p>The app uses Apple’s Core ML tools to find objects, estimate distance, and choose what to describe.</p></li><li><h3>Sound and touch</h3><p>The phone responds with directional sounds, spoken descriptions, and vibration alerts.</p></li></ol><p className="architecture-footnote">If the phone is busy, it skips camera images instead of letting them pile up. The screen shows distance lines and updates about how the app is running.</p></div></section>
-    <div className="wrap editorial-content"><EditorialRow title="What we’ve built."><ul className="editorial-list"><li>Finding objects, estimating distance, and following objects as the camera moves.</li><li>Up to six sounds at once, with separate controls for sound, speech, and vibrations.</li><li>Distance lines on screen, phone-position settings, and a choice of faster responses or more detail.</li><li>Setup, Assist, and Settings screens with labels for Apple’s VoiceOver screen reader.</li><li>Download progress and messages about low light, a covered camera, and overheating.</li></ul></EditorialRow><EditorialRow title="What still needs testing."><p>Working code and software tests do not show how well the app will work in everyday life. We still need to check:</p><ul className="editorial-list"><li>Building and running the app and its tests on real devices.</li><li>Object and distance estimates in different places, lighting, and phone positions.</li><li>Sound direction, head tracking, and what happens when headphones disconnect or audio is interrupted.</li><li>How quickly the app responds, how long it can run, and its effect on battery life and heat.</li><li>Carefully supervised testing before trying it in public spaces.</li></ul><p>We have not published measured results from real devices.</p></EditorialRow><EditorialRow title="Explore the code."><p>Visit GitHub to see how the app is built.</p><Link href={github} button>See the code on GitHub</Link></EditorialRow></div>
+    <div className="wrap editorial-content"><EditorialRow title="What we’ve built."><ul className="editorial-list"><li>Finding objects, estimating distance, and following objects as the camera moves.</li><li>Up to six sounds at once, with separate controls for sound, speech, and vibrations.</li><li>Distance lines on screen, phone-position settings, and a choice of faster responses or more detail.</li><li>Setup, Assist, and Settings screens with labels for Apple’s VoiceOver screen reader.</li><li>Download progress and messages about low light, a covered camera, and overheating.</li></ul></EditorialRow><EditorialRow title="What still needs testing."><p>Working code and software tests do not show how well the app will work in everyday life. We still need to check:</p><ul className="editorial-list"><li>Building and running the app and its tests on real devices.</li><li>Object and distance estimates in different places, lighting, and phone positions.</li><li>Sound direction, head tracking, and what happens when headphones disconnect or audio is interrupted.</li><li>How quickly the app responds, how long it can run, and its effect on battery life and heat.</li><li>Carefully supervised testing before trying it in public spaces.</li></ul><p>We have not published measured results from real devices.</p></EditorialRow></div>
     <NextPage title="Know what the app can miss." href="/safety-privacy/" label="Read safety & privacy" />
   </>;
 }
@@ -219,15 +227,15 @@ function Project() {
 function SafetyPrivacy() {
   return <>
     <PageIntro title={<>Know the limits.<br />{' '}Keep your privacy.</>}><p className="lead">Clear Ahead is still being tested. Your camera images stay on your phone.</p></PageIntro>
-    <section className="wrap safety-statement"><div className="note note-peach"><h2>Keep using your cane or guide dog.</h2><SafetyNote /><p>The app cannot tell you that it is safe to walk. Testing on real devices is still needed.</p></div></section>
+    <section className="wrap safety-statement"><div className="note note-peach"><h2>Keep using your cane or guide dog.</h2><SafetyNote /><p>The app cannot tell you that it is safe to walk.</p></div></section>
     <div className="wrap editorial-content"><EditorialRow title="It only sees where the camera points."><p>The app uses the rear camera’s current view. It does not keep a map or remember what is behind you.</p><p>It can miss things hidden behind other objects or outside the picture. If it reports nothing nearby, that does not mean the path is safe.</p></EditorialRow><EditorialRow title="Distances are estimates."><p>The app estimates distance from images. Even with careful setup, it can get things wrong. Small or thin obstacles may be missed, nearby surfaces may blend together, and stairs or drop-offs may not be recognized.</p><p>Low light, a covered camera, phone movement, incorrect settings, and overheating can affect the result. An unclear view is different from an empty one. Neither proves it is safe to move.</p></EditorialRow><EditorialRow title="Sound can be misleading."><p>Headphones and head tracking affect where sounds seem to come from. Front and back can sound similar. Phone speakers cannot reliably show height or distinguish front from back.</p><p>Spoken descriptions help explain objects and direction. Keep listening to your surroundings and use your own judgment.</p><Link href="/how-it-works/">Learn about sounds and phone setup</Link></EditorialRow></div>
-    <section className="privacy-section"><div className="wrap"><div className="section-heading"><h2>Your camera images<br />{' '}stay on your phone.</h2><p>The app checks images on your phone. There is no account, app server, or tracking of how you use the app.</p></div><DevicePreview /><dl className="definition-rows"><div><dt>No image uploads</dt><dd>Camera images are checked on your phone, without sending them to a server.</dd></div><div><dt>No saved camera images</dt><dd>The app does not record the camera feed or keep an image history.</dd></div><div><dt>Optional downloads</dt><dd>The smallest AI models come with the app. You can download larger ones, which the app checks before using. It asks before downloading over cellular or a connection that charges for data.</dd></div></dl><p className="privacy-footnote">Camera images stay on your phone, but downloading optional AI models still uses the internet.</p></div></section>
+    <section className="privacy-section"><div className="wrap"><div className="section-heading"><h2>Your camera images<br />{' '}stay on your phone.</h2><p>The app checks images on your phone. There is no account, app server, or tracking of how you use the app.</p></div><DevicePreview /><dl className="definition-rows"><div><dt>No image uploads</dt><dd>Camera images are checked on your phone, without sending them to a server.</dd></div><div><dt>No saved camera images</dt><dd>The app does not record the camera feed or keep an image history.</dd></div><div><dt>Optional downloads</dt><dd>The smallest AI models come with the app. You can download larger ones, which the app checks before using. It asks before downloading over cellular or a connection that charges for data.</dd></div></dl></div></section>
     <NextPage title="See the project behind the app." href="/project/" label="About the project" />
   </>;
 }
 
 function NextPage({ title, href, label }: { title: string; href: string; label: string }) {
-  return <section className="next-page wrap"><h2>{title}</h2><Link href={href} button>{label}</Link></section>;
+  return <section className="next-page wrap"><h2>{title}</h2><Link href={href}>{label}</Link></section>;
 }
 
 const pages: Record<string, () => ReactNode> = { '/': Home, '/how-it-works/': HowItWorks, '/project/': Project, '/safety-privacy/': SafetyPrivacy };

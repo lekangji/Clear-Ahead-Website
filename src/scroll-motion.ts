@@ -4,10 +4,11 @@ export function installScrollReveals() {
   if (preference.matches || !('IntersectionObserver' in window)) return;
 
   const targets = document.querySelectorAll<HTMLElement>([
-    '.feedback-panel', '.editorial-row', '.process-strip', '.project-band-inner',
-    '.mechanism-section > .section-heading', '.mechanism-section > .scene-preview',
-    '.architecture-band .section-heading', '.architecture-flow', '.device-preview',
-    '.privacy-section .section-heading', '.safety-statement', '.next-page',
+    '.home-banner', '.feedback-title', '.feedback-rows', '.feedback-panel',
+    '.editorial-row', '.process-strip', '.project-band-inner', '.mechanism-copy',
+    '.mechanism-section > .scene-preview', '.architecture-band .section-heading',
+    '.architecture-flow', '.device-preview', '.privacy-section .section-heading',
+    '.safety-statement', '.next-page', '.site-footer',
   ].join(','));
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {

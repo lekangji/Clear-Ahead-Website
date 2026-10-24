@@ -1,7 +1,33 @@
+# Dependencies and generated output
 node_modules/
 dist/
-.impeccable/review/
+coverage/
 test-results/
+playwright-report/
+.vite/
+.cache/
+*.tsbuildinfo
+
+# Local environment and secrets (keep shareable examples)
+.env
+.env.*
+!.env.example
+!.env.*.example
 *.local
+
+# Logs
+*.log
+
+# Local agent and editor state
 .impeccable/
 .codex/
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Operating system metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
