@@ -82,16 +82,11 @@ p + p { margin-top: 12px; }
 .signal-diagram { margin: 0; align-self: center; }
 .signal-composition { position: relative; isolation: isolate; width: 100%; aspect-ratio: 520 / 440; min-height: 300px; max-width: 540px; margin-inline: auto; }
 .signal-diagram figcaption { text-align: right; padding-right: 8%; margin-top: 16px; color: var(--muted); font-size: 11px; }
-.scene-origin { position: absolute; z-index: 1; top: 6%; left: 5%; display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 400; }
-.scene-origin svg { width: 16px; height: 16px; color: var(--accent); }
+.hero-homescreen { position: absolute; z-index: 1; left: 0; top: 0; width: 56%; height: 100%; object-fit: contain; }
 .signal-connections { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.sensor-outline { animation: sensor-lock 1.6s var(--ease) both; transform-origin: 120px 164px; }
-.sensor-scan { opacity: 0; animation: sensor-sweep 1.6s var(--ease) both; }
 .signal-path { opacity: 0; animation: signal-flow 4.8s linear both; }
-@keyframes sensor-lock { from { opacity: .25; transform: scale(1.06); } to { opacity: 1; transform: scale(1); } }
-@keyframes sensor-sweep { 0% { opacity: 0; transform: translateY(-32px); } 20% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; transform: translateY(100px); } }
 @keyframes signal-flow { 0% { stroke-dashoffset: 128; opacity: 0; } 20%, 80% { opacity: 1; } 100% { stroke-dashoffset: -256; opacity: 0; } }
-.signal-banner { position: absolute; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 56%; min-height: 92px; padding: 20px; border-radius: 12px; box-shadow: 0 16px 40px rgba(0,55,112,.12), 0 2px 6px rgba(0,55,112,.04); animation: signal-response 1.2s var(--ease) both; }
+.signal-banner { position: absolute; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 50%; min-height: 92px; padding: 20px; border-radius: 12px; box-shadow: 0 16px 40px rgba(0,55,112,.12), 0 2px 6px rgba(0,55,112,.04); animation: signal-response 1.2s var(--ease) both; }
 .signal-banner strong { display: block; font-size: 16px; font-weight: 400; letter-spacing: -.02em; line-height: 1.3; }
 .signal-banner div > span { display: block; margin-top: 5px; font-size: 11px; }
 .signal-sound { top: 16%; right: 0; background: var(--ink); color: var(--canvas); transform: rotate(-4deg); animation-delay: 1s; }
@@ -99,10 +94,10 @@ p + p { margin-top: 12px; }
 .signal-waveform { display: flex; align-items: center; justify-content: center; gap: 3px; width: 44px; min-width: 44px; height: 44px; flex-shrink: 0; }
 .signal-waveform i { width: 3px; border-radius: 2px; background: var(--icon-cyan); animation: signal-level 2.6s ease-in-out both; }
 @keyframes signal-level { 0%, 100% { transform: scaleY(1); } 18%, 62% { transform: scaleY(.35); } 40%, 78% { transform: scaleY(1.25); } }
-.signal-speech { top: 46%; right: 2%; background: var(--canvas); animation-delay: 2s; transform: rotate(3deg); }
+.signal-speech { top: 46%; right: -2%; background: var(--canvas); animation-delay: 2s; transform: rotate(3deg); }
 .signal-speech svg { width: 32px; height: 32px; margin-inline: 6px; color: var(--accent); }
 .signal-speech span { color: var(--muted); }
-.signal-haptics { top: 74%; right: 10%; background: var(--silver); animation-delay: 3s; transform: rotate(-3deg); }
+.signal-haptics { top: 74%; right: 0; background: var(--silver); animation-delay: 3s; transform: rotate(-3deg); }
 .signal-voice { animation: signal-speak 1.4s var(--ease) 2.2s both; }
 .signal-touch { animation: signal-vibrate .8s ease-out 3.4s both; }
 @keyframes signal-response { 0%, 100% { translate: 0 0; } 40% { translate: 0 -8px; } }
@@ -151,6 +146,8 @@ p + p { margin-top: 12px; }
 .privacy-section .device-preview { max-width: 760px; margin-top: 40px; }
 .editorial-row .scene-study { padding: 16px; }
 .home-banner { margin-top: 32px; }
+.demo-video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; border-radius: 12px; background: var(--ink); }
+.demo-video:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
 .feature-ribbon { position: relative; overflow: hidden; background: var(--canvas-soft); border-block: 1px solid var(--line); }
 .ribbon-track { display: flex; width: max-content; animation: ribbon-scroll 32s linear infinite; }
 .ribbon-track ul { display: flex; flex-shrink: 0; justify-content: space-around; min-width: 100vw; gap: 48px; padding: 22px 24px; margin: 0; list-style: none; }
@@ -172,7 +169,8 @@ p + p { margin-top: 12px; }
 .mechanism-section { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding-block: var(--section); }
 .mechanism-copy > p { margin-top: 20px; max-width: 45ch; color: var(--muted); }
 .mechanism-copy .text-link { margin-top: 12px; }
-.mechanism-section > .scene-preview { margin-top: 0; }
+.mechanism-video { min-width: 0; margin: 0; }
+.mechanism-video figcaption { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0 16px; margin-top: 8px; color: var(--muted); font-size: 12px; }
 .section-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
 .section-heading > p { max-width: 48ch; padding-top: 8px; color: var(--muted); }
 .project-band { position: relative; isolation: isolate; padding-block: var(--section); color: var(--canvas); margin-block: 24px; }
@@ -316,8 +314,7 @@ p + p { margin-top: 12px; }
   .hero-actions { gap: 8px 20px; }
   .hero-grid { gap: 32px; }
   .signal-composition { min-height: 280px; }
-  .scene-origin { font-size: 11px; }
-  .signal-banner { padding: 14px; min-height: 72px; gap: 8px; width: 57%; }
+  .signal-banner { padding: 14px; min-height: 72px; gap: 8px; }
   .signal-banner strong { font-size: 13px; }
   .signal-banner div > span { font-size: 10px; }
   .signal-speech svg, .signal-haptics svg { width: 24px; height: 24px; margin-inline: 2px; }

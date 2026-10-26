@@ -76,10 +76,10 @@ test('production has four direct-entry documents with unique metadata and local 
 test('shared UI preserves route coverage, repository links, and safety constraints', async () => {
   const source = await readFile('src/main.tsx', 'utf8');
   for (const route of ['/', '/how-it-works/', '/project/', '/safety-privacy/']) assert.ok(source.includes(`'${route}'`));
-  assert.match(source, /https:\/\/github\.com\/jiayangc1\/cac/);
+  assert.match(source, /https:\/\/github\.com\/jiayangc1\/ClearAhead/);
   assert.doesNotMatch(source, /currently private|private repository|authorized access|public source access/i);
   assert.match(source, /does not replace a cane, guide dog/);
-  assert.doesNotMatch(source, /mailto:|<form|<iframe|google-analytics\.com|googletagmanager\.com/i);
+  assert.doesNotMatch(source, /mailto:|<form|google-analytics\.com|googletagmanager\.com/i);
 });
 
 test('public files and production output contain no local user-directory paths', async () => {

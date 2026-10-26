@@ -25,7 +25,7 @@ Clear Ahead is an experimental, iPhone-only assistive vision prototype. This web
 
 - Four pages: Home, How It Works, The Project, Safety & Privacy. The homepage carries the essential story; supporting pages deepen it.
 - Primary action: View the app repository on GitHub. Help judges find the source from the homepage, navigation, project page, and footer. Other homepage actions lead to supporting website pages.
-- No contact address, app distribution link, physical performance results, testimonials, or real media are available. Omit them, including empty placeholders.
+- User-supplied media: an app homescreen image and a [three-minute pitch and app demonstration](https://youtu.be/DHR70mPy4-0). Feature these on the homepage. No contact address, app distribution link, physical performance results, or testimonials are available. Omit them, including empty placeholders.
 - Build locally with React, TypeScript, Vite, four static entry pages, and native links. No backend, analytics, publication, or iPhone app changes.
 
 ## Brand and design commitments
@@ -34,4 +34,4 @@ Preserve the existing logo and Stripe-inspired design, with the icon's blue/cyan
 
 ## Evidence
 
-Reviewed through the GitHub connector on 2026-10-20: [jiayangc1/cac](https://github.com/jiayangc1/cac), particularly `README.md` (blob SHA `32a970f68e57054a19a17091219d7f40858b2f30`), `src/config.ts`, the native scene/audio implementation, and iOS privacy declarations. The existing logo comes from `assets/clear-ahead-logo.png`. Repository implementation and test fixtures are not proof of physical-device performance or safety.
+Current app repository: [jiayangc1/ClearAhead](https://github.com/jiayangc1/ClearAhead), as supplied by the user on 2026-10-25. Technical facts were last reviewed through the GitHub connector on 2026-10-20, particularly `README.md` (blob SHA `32a970f68e57054a19a17091219d7f40858b2f30`), `src/config.ts`, the native scene/audio implementation, and iOS privacy declarations. The existing logo comes from `assets/clear-ahead-logo.png`. Repository implementation, test fixtures, and demonstration media are not proof of physical-device performance or safety.

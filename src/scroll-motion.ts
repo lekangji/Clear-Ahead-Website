@@ -6,7 +6,7 @@ export function installScrollReveals() {
   const targets = document.querySelectorAll<HTMLElement>([
     '.home-banner', '.feedback-title', '.feedback-rows', '.feedback-panel',
     '.editorial-row', '.process-strip', '.project-band-inner', '.mechanism-copy',
-    '.mechanism-section > .scene-preview', '.architecture-band .section-heading',
+    '.mechanism-video', '.architecture-band .section-heading',
     '.architecture-flow', '.device-preview', '.privacy-section .section-heading',
     '.safety-statement', '.next-page', '.site-footer',
   ].join(','));

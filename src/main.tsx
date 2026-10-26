@@ -6,7 +6,7 @@ import '@fontsource-variable/inter';
 import { installScrollReveals } from './scroll-motion';
 import './styles.css';
 
-const github = 'https://github.com/jiayangc1/cac';
+const github = 'https://github.com/jiayangc1/ClearAhead';
 const navigation = [
   { href: '/', label: 'Home' },
   { href: '/how-it-works/', label: 'How it works' },
@@ -68,21 +68,16 @@ function AmbientMesh() {
 }
 
 function SignalDiagram() {
-  return <figure className="signal-diagram" aria-label="Diagram showing how the camera view becomes sounds, spoken descriptions, and vibrations."><MotionRegion className="signal-composition">
-    <div className="scene-origin"><Camera strokeWidth={1.5} aria-hidden="true" />Camera view</div>
+  return <figure className="signal-diagram" aria-label="Clear Ahead homescreen with illustrative sound, speech, and vibration feedback."><MotionRegion className="signal-composition">
+    <img className="hero-homescreen" src="/clear-ahead-homescreen.png" alt="Clear Ahead homescreen with a large Start button, settings, and a summary of walks, time guided, and alerts." width="1049" height="1500" fetchPriority="high" decoding="async" />
     <svg className="signal-connections" viewBox="0 0 520 440" fill="none" aria-hidden="true">
-      <defs><linearGradient id="scan-fill" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#51B4F0" stopOpacity="0" /><stop offset="1" stopColor="#51B4F0" stopOpacity=".22" /></linearGradient></defs>
-      <path d="M24 94V74h24m150 0h24v20M24 242v20h24m150 0h24v-20" stroke="#1265BC" strokeWidth="1.5" />
-      <g className="sensor-outline ambient-motion" stroke="#1265BC"><rect x="57" y="112" width="63" height="102" rx="4" /><path d="M144 152h47v62h-47z" strokeDasharray="4 4" /><path d="M57 127v-15h15m33 0h15v15m0 72v15h-15m-33 0H57v-15" strokeWidth="3" /></g>
-      <path className="sensor-scan ambient-motion" d="M36 88h174v48H36z" fill="url(#scan-fill)" /><path className="sensor-scan ambient-motion" d="M36 136h174" stroke="#2784E8" />
-      <g stroke="#1265BC" strokeOpacity=".2"><path d="M36 230q87-36 174 0M36 243q87-36 174 0" /><path d="M123 262v82q0 18 18 18h68M222 168h42q16 0 16-16V112h18M222 198h20q16 0 16 16v26h40" /></g>
-      <path className="signal-path ambient-motion" d="M222 168h42q16 0 16-16V112h18M222 198h20q16 0 16 16v26h40M123 262v82q0 18 18 18h68" stroke="#2784E8" strokeWidth="2" strokeDasharray="8 120" />
-      <text x="57" y="103" fill="#1265BC" fontSize="11">Object</text><text x="144" y="144" fill="#526780" fontSize="11">Surface</text>
+      <path d="M210 210h24q16 0 16-16V112h48M210 210h88M210 210h24q16 0 16 16v118q0 18 18 18h30" stroke="#1265BC" strokeOpacity=".2" />
+      <path className="signal-path ambient-motion" d="M210 210h24q16 0 16-16V112h48M210 210h88M210 210h24q16 0 16 16v118q0 18 18 18h30" stroke="#2784E8" strokeWidth="2" strokeDasharray="8 120" />
     </svg>
     <div className="signal-banner signal-sound ambient-motion"><div><strong>Directional sound</strong><span>Where things are</span></div><span className="signal-waveform" aria-hidden="true">{[12, 24, 38, 20, 30, 14, 22].map((height, index) => <i key={index} className="ambient-motion" style={{ height, animationDelay: `${index * 80 + 1300}ms` }} />)}</span></div>
     <div className="signal-banner signal-speech ambient-motion"><div><strong>Spoken descriptions</strong><span>What things are</span></div><MessageSquareText className="signal-voice ambient-motion" strokeWidth={1.5} aria-hidden="true" /></div>
     <div className="signal-banner signal-haptics ambient-motion"><div><strong>Vibration alerts</strong><span>Possible danger nearby</span></div><Vibrate className="signal-touch ambient-motion" strokeWidth={1.5} aria-hidden="true" /></div>
-  </MotionRegion><figcaption>Illustrative signal flow</figcaption></figure>;
+  </MotionRegion><figcaption>App homescreen · illustrative feedback</figcaption></figure>;
 }
 
 function FeatureRibbon() {
@@ -181,7 +176,7 @@ function SafetyNote() {
 
 function Home() {
   return <>
-    <section className="home-intro"><AmbientMesh /><div className="wrap hero-grid"><div className="hero-copy"><h1>Another way<br />{' '}to sense what’s ahead.</h1><p className="lead">Your iPhone’s camera becomes another source of awareness. Nearby objects, translated into sound, speech, and touch.</p><div className="hero-actions"><Link href={github} button>See the code on GitHub</Link><Link href="/how-it-works/">How it works</Link></div><p className="hero-status">An assistive vision prototype for iPhone · iOS 17+</p></div><SignalDiagram /></div>
+    <section className="home-intro"><AmbientMesh /><div className="wrap hero-grid"><div className="hero-copy"><h1>Another way<br />{' '}to sense what’s ahead.</h1><p className="lead">Your iPhone’s camera becomes another source of awareness. Nearby objects, translated into sound, speech, and touch.</p><div className="hero-actions"><Link href={github} button>See the code on GitHub</Link><Link href="#demo">Watch the demo</Link></div><p className="hero-status">An assistive vision prototype for iPhone · iOS 17+</p></div><SignalDiagram /></div>
     </section>
     <div className="wrap home-banner"><FeatureRibbon /></div>
 
@@ -189,7 +184,7 @@ function Home() {
       <div className="feedback-title"><h2 id="feedback-heading">One view. More context.</h2><p>Choose the feedback that works for you. Control each channel independently.</p></div><div className="feedback-rows"><div><AudioLines strokeWidth={1.5} aria-hidden="true" /><h3>Hear direction.</h3><p>Sounds suggest where objects are, with volume changing as estimated distance changes.</p></div><div><MessageSquareText strokeWidth={1.5} aria-hidden="true" /><h3>Hear a description.</h3><p>Short messages name objects and their direction. Other sounds soften while the app speaks.</p></div><div><Vibrate strokeWidth={1.5} aria-hidden="true" /><h3>Feel an alert.</h3><p>Vibrations signal an estimated risk of collision, rather than everything the camera sees.</p></div></div>
     </section>
 
-    <section className="mechanism-section wrap"><div className="mechanism-copy"><h2>Objects, surfaces,<br />{' '}and the space between.</h2><p>The app follows visible objects and estimates distance. Nearby surfaces add context, even when they can’t be named.</p><Link href="/how-it-works/">Explore the technology</Link></div><ScenePreview /></section>
+    <section className="mechanism-section wrap" id="demo" aria-labelledby="demo-heading"><div className="mechanism-copy"><h2 id="demo-heading">Objects, surfaces,<br />{' '}and the space between.</h2><p>The app follows visible objects and estimates distance. Nearby surfaces add context, even when they can’t be named.</p><Link href="/how-it-works/">Explore the technology</Link></div><figure className="mechanism-video"><iframe className="demo-video" src="https://www.youtube-nocookie.com/embed/DHR70mPy4-0" title="Clear Ahead — three-minute pitch and app demonstration" width="1280" height="720" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /><figcaption><span>Three-minute pitch & app demonstration</span><Link href="https://youtu.be/DHR70mPy4-0">Watch on YouTube</Link></figcaption></figure></section>
 
     <section className="project-band"><div className="wrap"><div className="project-band-inner"><h2>On your phone.<br />{' '}<span>By design.</span></h2><div className="project-band-copy"><p>Camera images are processed on your iPhone, without being uploaded or saved. No account. No app server. No app analytics.</p><Link href="/project/">Inside the project</Link></div></div><DevicePreview /></div></section>
 
