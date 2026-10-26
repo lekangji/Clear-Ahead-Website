@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/clear-ahead-logo.png" alt="ClearAhead" width="112" />
+  <img src="public/clear-ahead-logo.png" alt="ClearAhead" width="128" />
 </p>
 
 <h1 align="center">ClearAhead</h1>
