@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="public/clear-ahead-logo.png" alt="Clear Ahead" width="112" />
+  <img src="public/clear-ahead-logo.png" alt="ClearAhead" width="112" />
 </p>
 
-<h1 align="center">Clear Ahead</h1>
-<p align="center"><i>Because awareness shouldn't depend on sight alone.</i></p>
-<p align="center"><a href="https://clearahead.lekangji.cc"><strong>Explore the website →</strong></a> · <a href="https://github.com/jiayangc1/ClearAhead">App source on GitHub</a> · <a href="https://youtu.be/DHR70mPy4-0">Watch the demo</a></p>
+<h1 align="center">ClearAhead</h1>
+<p align="center"><i>because awareness shouldn't depend on sight alone.</i></p>
+<p align="center"><a href="https://clearahead.lekangji.cc"><strong>Explore the website</strong></a> · <a href="https://github.com/jiayangc1/ClearAhead">View the source</a> · <a href="https://youtu.be/DHR70mPy4-0">Watch the demo</a></p>
 
 An app in development that describes nearby objects through **sounds, spoken words, and vibrations**. This website explains the idea, shows how it works, and links to the code.
 
@@ -15,8 +15,6 @@ An app in development that describes nearby objects through **sounds, spoken wor
 - **Keep camera images on your phone.** The app does not upload or save them.
 - **See it in action.** The homepage introduces the app with its homescreen, then pairs the technology explanation with the [three-minute pitch and app demonstration](https://youtu.be/DHR70mPy4-0).
 - **See how it’s built.** Explore the code in the [app repository](https://github.com/jiayangc1/ClearAhead).
-
-The site covers **How it works**, **The project**, and **Safety & privacy**. A blue, Stripe-inspired design pairs locally bundled Inter with animated diagrams of camera processing and feedback. Keyboard navigation and your device’s reduced-motion setting are supported throughout.
 
 ## Run the website
 
